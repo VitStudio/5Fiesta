@@ -1,8 +1,6 @@
 <template>
-  <q-page class="flex flex-top">
-    <div class="col-xs-1-12">
-      David
-    </div>
+  <q-page padding>
+    <p>Settings</p>
   </q-page>
 </template>
 
@@ -13,3 +11,8 @@ export default defineComponent({
   name: 'PageIndex'
 })
 </script>
+
+<style scoped>
+
+
+</style>

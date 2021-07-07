@@ -1,89 +1,88 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
+
+    <!-- (Optional) The Header -->
+    <q-header>
       <q-toolbar>
         <q-btn
           flat
-          dense
           round
+          dense
           icon="menu"
-          aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
+       <div class="q-px-lg q-pt-xl q-mb-md">
+         <div class="text-h3">Todo</div>
+         <div class="class text-subtitle1">{{ todaysDate }}</div>
+       </div>
+       <q-img
+         src="https://cdn.pixabay.com/photo/2017/05/20/20/22/clouds-2329680_960_720.jpg"
+         class="header-image absolute-top" />
     </q-header>
 
+    <!-- (Optional) Footer section below -->
+    <q-footer>
+      <q-tabs>
+        <q-route-tab class=""
+          icon="home"
+          label="Home" />
+      </q-tabs>
+    </q-footer>
+
+    <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
+      side="left"
       bordered
-      class="bg-grey-1"
+      class="bg-grey-2"
     >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+      <!-- QScrollArea is optional -->
+      <q-scroll-area class="fit q-pa-sm">
+        <!-- Content here -->
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
+      <!-- This is where pages get injected -->
       <router-view />
     </q-page-container>
+
   </q-layout>
 </template>
 
+<style lang="scss">
+.header-image {
+  height: 100%;
+  z-index: -1;
+  opacity: 0.2;
+  filter: grayscale(100%);
+}
+</style>
+
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import { ref } from 'vue'
+import { date } from 'quasar'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'dns',
-    link: 'https://github.com/quasarframework'
-  },
-];
-
-import { defineComponent, ref } from 'vue'
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
+export default {
+  // name: 'LayoutName',
 
   setup () {
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
+    }    
+  },
+  computed: {
+    todaysDate() {
+          const timeStamp = Date.now()
+          return date.formatDate(timeStamp, 'dddd d YYYY')
+
     }
-  }
-})
+  },
+}
 </script>
