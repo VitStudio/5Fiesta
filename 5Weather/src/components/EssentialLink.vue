@@ -15,7 +15,7 @@
     <q-item-section>
       <q-item-label>{{ title }}</q-item-label>
       <q-item-label caption>
-        {{ caption }}
+        {{ description }}
       </q-item-label>
     </q-item-section>
   </q-item>
@@ -37,9 +37,9 @@ export default defineComponent({
       default: ''
     },
 
-    decscribe: {
+    description: {
       type: String,
-      default: 'For papragrah texting'
+      default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius turpis sed sem luctus, a blandit tortor aliquam. Praesent euismod leo risus, sed eleifend dolor faucibus quis. Maecenas feugiat dictum leo, sit amet feugiat orci pulvinar eu. Nullam tincidunt arcu id fringilla vulputate. Quisque porta elit id pretium efficitur. Integer odio magna, luctus ac sodales in, dictum ut augue. Pellentesque mattis enim dui, non aliquet turpis fermentum quis.'
     },
 
     link: {
