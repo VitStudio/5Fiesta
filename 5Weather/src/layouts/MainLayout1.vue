@@ -13,7 +13,7 @@
       </q-toolbar>
       <div class="q-px-lg q-pt-xl q-mb-md">
         <div class="text-h3">Todo</div>
-        <div class="text-subtitle1">daytoday</div>
+        <div class="text-subtitle1">{{ todaysDate }}</div>
       </div>
       <q-img
       src="https://cdn.pixabay.com/photo/2017/05/20/20/22/clouds-2329680_960_720.jpg" 
@@ -102,7 +102,7 @@ export default defineComponent({
       computed: {
         todaysDate() {
           const timeStamp = Date.now()
-          const formattedString = date.formatDate(timeStamp, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+          return date.formatDate(timeStamp, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
         }
       }
     }
