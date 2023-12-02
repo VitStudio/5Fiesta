@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fiesta</title>
+  <!-- Include Day.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+</head>
+<body>
+  <div id="date"></div>
+  <div id="time"></div>
+  <div id="timezone"></div>
+
+  <script>
+    // Your JavaScript code using Day.js
+    function updateDateTime() {
+      // Get current datetime
+      const currentDateTime = dayjs();
+
+      // Display date
+      document.getElementById('date').innerText = `Current Date: ${currentDateTime.format('YYYY-MM-DD')}`;
+
+      // Display time
+      document.getElementById('time').innerText = `Current Time: ${currentDateTime.format('HH:mm:ss')}`;
+
+      // Display timezone
+      document.getElementById('timezone').innerText = `Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone}`;
+    }
+
+    // Update datetime every second
+    setInterval(updateDateTime, 1000);
+
+    // Initial call to display datetime
+    updateDateTime();
+  </script>
+</body>
+</html>
